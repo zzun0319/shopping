@@ -2,7 +2,7 @@ package com.shopping.domain;
 
 public enum DeliveryStatus {
 
-    COMPLETE("배송완료"), ING("배송중"), BEFORE("배송대기");
+    COMPLETE("배송완료"), ING("배송중"), BEFORE("배송대기"), CANCEL("배송취소");
 
     private final String description;
 

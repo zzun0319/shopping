@@ -19,4 +19,18 @@ public class Item {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member salesman;
+
+    /**
+     * 누군가 상품을 주문했을 때 재고에서 주문수량만큼 감소시킨다.
+     */
+    public void reduceStockQuantity(int cnt) {
+        this.stockQuantity -= cnt;
+    }
+
+    /**
+     * 누군가 상품을 주문을 취소했을 때 취소한 수량만큼 재고를 증가시킨다.
+     */
+    public void addStockQuantity(int cnt) {
+        this.stockQuantity += cnt;
+    }
 }

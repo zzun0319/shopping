@@ -44,12 +44,39 @@ public class Member {
     }
 
     /**
-     * 판매 허가 메서드
+     * 판매 허가 메서드 (ADMIN만 비밀번호를 알고 바꿀 수 있도록)
      * @param permitPassword
      */
     public void permitSale(String permitPassword){
         if(permitPassword.equals("abc1234")){
             this.saleAvailable = true;
+        }
+    }
+    
+    //TODO: 회원 등급 변경 메서드
+
+
+    /**
+     * 이름 변경 메서드
+     * @param name
+     */
+    public void changeName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * 비밀번호 변경 메서드
+     * @param currentPw
+     * @param newPw
+     * @return 결과 메시지
+     */
+    public String changePassword(String currentPw, String newPw) {
+        if (this.password == currentPw){
+            this.password = newPw;
+            return "비밀번호가 변경되었습니다.";
+        }
+        else {
+            return "현재 비밀번호가 일치하지 않습니다.";
         }
     }
 
