@@ -1,5 +1,7 @@
 package com.shopping.domain;
 
+import com.shopping.enums.DeliveryStatus;
+import com.shopping.enums.OrderStatus;
 import com.shopping.exception.CannotCancelException;
 import lombok.AccessLevel;
 import lombok.Getter;

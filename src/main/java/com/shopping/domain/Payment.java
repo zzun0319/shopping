@@ -1,11 +1,16 @@
 package com.shopping.domain;
 
+import com.shopping.enums.PaymentOption;
+import com.shopping.enums.PaymentStatus;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Payment {
 
     @Id @GeneratedValue

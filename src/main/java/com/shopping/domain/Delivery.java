@@ -1,11 +1,16 @@
 package com.shopping.domain;
 
+import com.shopping.domain.valuetypes.Address;
+import com.shopping.enums.DeliveryStatus;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Delivery {
 
     @Id @GeneratedValue

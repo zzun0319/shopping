@@ -1,5 +1,6 @@
 package com.shopping.domain;
 
+import com.shopping.enums.Grade;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
