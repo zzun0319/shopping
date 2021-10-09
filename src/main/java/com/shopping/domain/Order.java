@@ -38,7 +38,7 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    public Order(Member member, Delivery delivery, Payment payment) {
+    private Order(Member member, Delivery delivery, Payment payment) {
         this.member = member;
         this.delivery = delivery;
         this.payment = payment;
@@ -84,6 +84,11 @@ public class Order {
         for (OrderItem orderItem : orderItems) {
             orderItem.cancel();
         }
+    }
+
+    public void pay() {
+        payment.pay(getTotalOrderPrice());
+        delivery.startDelivery();
     }
 
     /**

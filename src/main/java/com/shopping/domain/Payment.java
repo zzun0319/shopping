@@ -20,8 +20,20 @@ public class Payment {
     @Enumerated(EnumType.STRING)
     private PaymentOption option;
 
-    private Integer totalPrice;
+    private Integer paidPrice;
 
     @Enumerated(EnumType.STRING)
     private PaymentStatus status;
+
+    public Payment(PaymentOption option) {
+        this.option = option;
+        this.paidPrice = 0;
+        this.status = PaymentStatus.NOT_YET;
+    }
+
+    public void pay(Integer paidPrice) {
+        this.paidPrice = paidPrice;
+        this.status = PaymentStatus.COMPLETE;
+    }
+
 }

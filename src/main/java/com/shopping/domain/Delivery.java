@@ -2,6 +2,7 @@ package com.shopping.domain;
 
 import com.shopping.domain.valuetypes.Address;
 import com.shopping.enums.DeliveryStatus;
+import com.shopping.exception.CannotChangeAddressException;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,11 +41,10 @@ public class Delivery {
         this.status = DeliveryStatus.COMPLETE;
     }
 
-    public String addressChange(Address address) {
-        if(this.status == DeliveryStatus.BEFORE) {
-            this.address = address;
-            return "배송지 변경 완료";
+    public void addressChange(Address address) {
+        if(this.status != DeliveryStatus.BEFORE) {
+            throw new CannotChangeAddressException("배송 시작 전에만 변경 가능합니다");
         }
-        return "배송 대기 상태에서만 변경이 가능합니다.";
+        this.address = address;
     }
 }

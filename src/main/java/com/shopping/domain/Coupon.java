@@ -66,6 +66,18 @@ public class Coupon {
                 (type == DiscountType.FIX) ? String.format("{} {}원 할인 쿠폰", reason, value) : String.format("{} {}% 할인 쿠폰", reason, value);
     }
 
+    /**
+     * 테스트용 생성자: 만료된 쿠폰 테스트하기 위함.
+     * @param issueDate
+     * @param expireDate
+     * @param member
+     */
+    public Coupon(LocalDateTime issueDate, LocalDateTime expireDate, Member member) {
+        this.issueDate = issueDate;
+        this.expireDate = expireDate;
+        this.member = member;
+    }
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;

@@ -1,6 +1,7 @@
 package com.shopping.domain.items;
 
 import com.shopping.domain.Member;
+import com.shopping.exception.CannotSaleItemException;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Item {
+public abstract class Item {
 
     @Id @GeneratedValue
     @Column(name = "item_id")
@@ -26,14 +27,13 @@ public class Item {
     protected Member salesman;
 
     protected Item(String name, Integer price, Integer stockQuantity, Member salesman) {
+        if(!salesman.getSaleAvailable()){
+            throw new CannotSaleItemException("상품 판매 허가가 나지 않았습니다.");
+        }
         this.name = name;
         this.price = price;
         this.stockQuantity = stockQuantity;
         this.salesman = salesman;
-    }
-
-    public static Item createItem(String name, Integer price, Integer stockQuantity, Member member){
-        return new Item(name, price, stockQuantity, member);
     }
 
     /**
