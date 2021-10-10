@@ -9,7 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 @Getter @Setter
-public class JoinForm {
+public class MemberJoinForm {
 
     @NotEmpty
     @Length(min = 8, max = 14)
@@ -24,4 +24,10 @@ public class JoinForm {
     private String name;
 
     private MultipartFile salesPermissionFile;
+
+    public MemberJoinForm(String loginId, String password, String name) {
+        this.loginId = loginId;
+        this.password = password;
+        this.name = name;
+    }
 }

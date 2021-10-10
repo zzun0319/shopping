@@ -20,7 +20,7 @@ class MemberTest {
         member.permitSale("abc1234");
 
         // then
-        assertThat(member.getSaleAvailable()).isEqualTo(true);
+        assertThat(member.getSaleAvailable()).isTrue();
     }
 
     @Test
@@ -34,30 +34,7 @@ class MemberTest {
         member.permitSale("adore32"); // 판매 허가를 위한 비밀번호 틀렸을 때
 
         // then
-        assertThat(member.getSaleAvailable()).isEqualTo(false);
+        assertThat(member.getSaleAvailable()).isFalse();
     }
 
-    @Test
-    @DisplayName("비밀번호를 바꾸려면 기존 비밀번호가 일치해야 바꿀 수 있다")
-    void changePassword() {
-
-        // given
-        Member member = Member.createMember("memberA", "aaa1111", "aaa#1111");
-
-        // when
-        member.changePassword("aaa#1111", "abc1234#");
-
-        // then
-        assertThat(member.getPassword()).isEqualTo("abc1234#");
-    }
-
-    @Test
-    void changePasswordFail() {
-
-        // given, when
-        Member member = Member.createMember("memberA", "aaa1111", "aaa#1111");
-
-        // then
-        assertThat(member.changePassword("aa1111", "abc1234#")).isEqualTo("현재 비밀번호가 일치하지 않습니다.");
-    }
 }

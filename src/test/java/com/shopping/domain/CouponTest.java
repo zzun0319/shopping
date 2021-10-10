@@ -19,7 +19,7 @@ class CouponTest {
         Coupon coupon = new Coupon(member); // 기본 쿠폰 생성
 
         // then
-        Assertions.assertThat(coupon.isUsable()).isEqualTo(true);
+        Assertions.assertThat(coupon.isUsable()).isTrue();
         Assertions.assertThat(coupon.getValue()).isEqualTo(1000);
     }
 
@@ -33,6 +33,6 @@ class CouponTest {
         Coupon coupon = new Coupon(LocalDateTime.of(2020, 3, 19, 12, 30), LocalDateTime.of(2021, 3, 19, 12, 30), member);
 
         // then
-        Assertions.assertThat(coupon.isUsable()).isEqualTo(false);
+        Assertions.assertThat(coupon.isUsable()).isFalse();
     }
 }

@@ -34,6 +34,22 @@ public class Member {
     }
 
     /**
+     * 테스트용, DB 초기화용 회원을 만들기 위한 생성자
+     * @param name
+     * @param loginId
+     * @param password
+     * @param grade
+     * @param saleAvailable
+     */
+    public Member(String name, String loginId, String password, Grade grade, Boolean saleAvailable) {
+        this.name = name;
+        this.loginId = loginId;
+        this.password = password;
+        this.grade = grade;
+        this.saleAvailable = saleAvailable;
+    }
+
+    /**
      * 멤버 생성 메서드
      * @param name
      * @param loginId
@@ -56,7 +72,6 @@ public class Member {
     
     //TODO: 회원 등급 변경 메서드
 
-
     /**
      * 이름 변경 메서드
      * @param name
@@ -65,20 +80,6 @@ public class Member {
         this.name = name;
     }
 
-    /**
-     * 비밀번호 변경 메서드
-     * @param currentPw
-     * @param newPw
-     * @return 결과 메시지
-     */
-    public String changePassword(String currentPw, String newPw) {
-        if (this.password == currentPw){
-            this.password = newPw;
-            return "비밀번호가 변경되었습니다.";
-        }
-        else {
-            return "현재 비밀번호가 일치하지 않습니다.";
-        }
-    }
+    public void changePassword(String password){this.password = password;}
 
 }
