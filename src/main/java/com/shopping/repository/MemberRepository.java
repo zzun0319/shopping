@@ -13,9 +13,7 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     Optional<Member> findByLoginId(String loginId);
 
-    @Query("SELECT m FROM Member m WHERE m.grade = :grade")
     List<Member> findByGrade(@Param("grade") Grade grade);
 
-    @Query("SELECT m FROM Member m WHERE m.saleAvailable = :available")
     List<Member> findBySaleAvailable(@Param("available") Boolean available);
 }

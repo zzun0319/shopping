@@ -1,6 +1,7 @@
 package com.shopping.controller.form;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.web.multipart.MultipartFile;
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 @Getter @Setter
+@NoArgsConstructor
 public class MemberJoinForm {
 
     @NotEmpty
