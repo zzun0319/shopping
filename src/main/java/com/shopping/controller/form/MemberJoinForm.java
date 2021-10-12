@@ -13,16 +13,14 @@ import javax.validation.constraints.Pattern;
 @NoArgsConstructor
 public class MemberJoinForm {
 
-    @NotEmpty
-    @Length(min = 8, max = 14)
+    @Length(min = 6, max = 14, message = "아이디는 필수값이며 6~14자리여야 합니다.")
     private String loginId;
 
-    @NotEmpty
     @Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{10,30}",
-            message = "비밀번호는 영문 대,소문자와 숫자, 특수기호가 적어도 1개 이상씩 포함된 8자 ~ 20자의 비밀번호여야 합니다.")
+            message = "비밀번호는 10~30자리의 영문대소문자와 숫자, 특수문자의 조합이어야합니다.")
     private String password;
 
-    @NotEmpty
+    @NotEmpty(message = "이름은 필수값입니다.")
     private String name;
 
     private MultipartFile salesPermissionFile;

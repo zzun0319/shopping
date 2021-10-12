@@ -1,7 +1,9 @@
 package com.shopping.domain.items;
 
 import com.shopping.domain.Member;
+import com.shopping.domain.commons.BaseTime;
 import com.shopping.exception.CannotSaleItemException;
+import com.shopping.exception.NotEnoughStockException;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +14,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class Item {
+public abstract class Item extends BaseTime {
 
     @Id @GeneratedValue
     @Column(name = "item_id")
@@ -40,6 +42,10 @@ public abstract class Item {
      * 누군가 상품을 주문했을 때 재고에서 주문수량만큼 감소시킨다.
      */
     public void reduceStockQuantity(int cnt) {
+        int restStock = stockQuantity - cnt;
+        if (restStock < 0) {
+            throw new NotEnoughStockException("재고가 부족합니다");
+        }
         this.stockQuantity -= cnt;
     }
 

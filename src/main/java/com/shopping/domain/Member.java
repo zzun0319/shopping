@@ -1,5 +1,6 @@
 package com.shopping.domain;
 
+import com.shopping.domain.commons.BaseTime;
 import com.shopping.enums.Grade;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member {
+public class Member extends BaseTime {
 
     @Id @GeneratedValue
     @Column(name = "member_id")

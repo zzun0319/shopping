@@ -16,4 +16,5 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     List<Member> findByGrade(@Param("grade") Grade grade);
 
     List<Member> findBySaleAvailable(@Param("available") Boolean available);
+
 }

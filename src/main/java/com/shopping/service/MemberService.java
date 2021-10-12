@@ -2,8 +2,8 @@ package com.shopping.service;
 
 import com.shopping.controller.form.ChangePasswordForm;
 import com.shopping.controller.form.MemberJoinForm;
+import com.shopping.controller.form.MemberLoginForm;
 import com.shopping.domain.Member;
-import com.shopping.exception.NoSuchMemberException;
 import com.shopping.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -38,6 +38,16 @@ public class MemberService {
         Member member = Member.createMember(form.getName(), form.getLoginId(), form.getPassword());
         Member savedMember = memberRepository.save(member);
         return savedMember.getId();
+    }
+
+    /**
+     * 로그인 처리
+     * @param loginForm
+     * @return
+     */
+    public Member login(MemberLoginForm loginForm) {
+        Optional<Member> om = memberRepository.findByLoginId(loginForm.getLoginId());
+        return om.filter(member -> member.getPassword().equals(loginForm.getPassword())).orElse(null);
     }
 
     /**

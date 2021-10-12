@@ -1,3 +1,7 @@
+server:
+  servlet:
+    session:
+      tracking-modes: cookie
 spring:
   datasource:
     url: jdbc:h2:tcp://localhost/~/shopping
@@ -13,10 +17,13 @@ spring:
     multipart:
       max-file-size: 100MB
       max-request-size: 100MB
+  messages:
+    basename: messages, errors
 
 logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace
+#  org.apache.coyote.http11: debug
 
 file:
   dir: D:/uploadLocation/
